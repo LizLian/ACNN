@@ -47,23 +47,25 @@ relation_types = [
 
 ###    - Parse the input data by getting the word sequence and the argument POSITION IDs for e1 and e2
 ###    [[w_1, w_2, w_3, .....], [pos_1, pos_2], [label_id]]  for EACH data instance/sentence/argpair
-def load_dataset(train_file, val_file, test_file, max_length=100):
+def load_dataset(file, test_file, max_length=100):
     """
-    Inputs: training, validation and test files in TSV format
+    Inputs: training file in TSV format. Split the file later. Cross validation
     Outputs: vocabulary (with attached embedding), training, validation and test datasets ready for neural net training
     """
-    train_array = load_tsv_to_array(train_file)
-    val_array   = load_tsv_to_array(val_file)
+    train_array = load_tsv_to_array(file)
+    # val_array   = load_tsv_to_array(val_file)
     test_array  = load_tsv_to_array(test_file)
     
-    vocabulary  = build_vocabulary(train_array, val_array, test_array)
-    vocabulary.reserved_tokens.extend(['e1_start', 'e1_end', 'e2_start', 'e2_end'])
-    train_dataset = preprocess_dataset(train_array, vocabulary, max_length)
-    val_dataset = preprocess_dataset(val_array, vocabulary, max_length)
+    # vocabulary  = build_vocabulary(train_array, val_array, test_array)
+    # vocabulary.reserved_tokens.extend(['e1_start', 'e1_end', 'e2_start', 'e2_end'])
+    vocabulary = build_vocabulary(train_array, test_array)
+    dataset = preprocess_dataset(train_array, vocabulary, max_length)
+    # train_dataset = preprocess_dataset(train_array, vocabulary, max_length)
+    # val_dataset = preprocess_dataset(val_array, vocabulary, max_length)
     test_dataset = preprocess_dataset(test_array, vocabulary, max_length)
 
     data_transform = BasicTransform(relation_types, max_length)
-    return vocabulary, train_dataset, val_dataset, test_dataset, data_transform
+    return vocabulary, dataset, test_dataset, data_transform
 
 def tokenize(txt):
     """
@@ -72,48 +74,41 @@ def tokenize(txt):
     return word_tokenize(txt)
 
 
-def build_vocabulary(tr_array, val_array, tst_array):
+def build_vocabulary(tr_array, tst_array):
     """
     Inputs: arrays representing the training, validation and test data
     Outputs: vocabulary (Tokenized text as in-place modification of input arrays or returned as new arrays)
     """
     all_tokens = []
-    for i, instance in enumerate(tr_array):
-        label, e1, e2, text = instance
-        tokens = text.split(" ")
-        tokens.insert(e2 + 1, "e2_end")
-        tokens.insert(e2, "e2_start")
-        tokens.insert(e1 + 1, "e1_end")
-        tokens.insert(e1, "e1_start")
-        text = ' '.join(tokens)
-        tokens = tokenize(text)
-        tr_array[i] = (label, tokens.index("e1_start")+1, tokens.index("e2_start")+1, tokens)  ## IN-PLACE modification of tr_array
-        all_tokens.extend(tokens)
-    for i, instance in enumerate(val_array):
-        label, e1, e2, text = instance
-        tokens = text.split(" ")
-        tokens.insert(e2 + 1, "e2_end")
-        tokens.insert(e2, "e2_start")
-        tokens.insert(e1 + 1, "e1_end")
-        tokens.insert(e1, "e1_start")
-        text = ' '.join(tokens)
-        tokens = tokenize(text)
-        val_array[i] = (label, tokens.index("e1_start")+1, tokens.index("e2_start")+1, tokens)  ## IN-PLACE modification
-        all_tokens.extend(tokens)
-    for i, instance in enumerate(tst_array):
-        label, e1, e2, text = instance
-        tokens = text.split(" ")
-        tokens.insert(e2 + 1, "e2_end")
-        tokens.insert(e2, "e2_start")
-        tokens.insert(e1 + 1, "e1_end")
-        tokens.insert(e1, "e1_start")
-        text = ' '.join(tokens)
-        tokens = tokenize(text)
-        tst_array[i] = (label, tokens.index("e1_start")+1, tokens.index("e2_start")+1, tokens)  ## IN-PLACE modification
-        all_tokens.extend(tokens)
+    tr_array, tokens = _get_tokens(tr_array)
+    all_tokens.extend(tokens)
+    # val_array, tokens = _get_tokens(val_array)
+    # all_tokens.extend(tokens)
+    tst_array, tokens = _get_tokens(tst_array)
+    all_tokens.extend(tokens)
     counter = nlp.data.count_tokens(all_tokens)
     vocab = nlp.Vocab(counter)
     return vocab
+
+
+def _get_tokens(array):
+    all_tokens = []
+    for i, instance in enumerate(array):
+        label, e1, e2, text = instance
+        tokens = text.split(" ")
+        tokens.insert(e2 + 1, "e2_end")
+        tokens.insert(e2, "e2_start")
+        tokens.insert(e1 + 1, "e1_end")
+        tokens.insert(e1, "e1_start")
+        text = ' '.join(tokens)
+        tokens = tokenize(text)
+        inds = [tokens.index("e1_start")+1, tokens.index("e2_start")+1]
+        tokens = [token for token in tokens if token not in["e1_start", "e2_start", "e1_end", "e2_end"]]
+        inds[0] = inds[0] - 1
+        inds[1] = inds[1] - 3
+        array[i] = (label, inds[0], inds[1], tokens)  ## IN-PLACE modification of tr_array
+        all_tokens.extend(tokens)
+    return array, all_tokens
 
 
 def _preprocess(x, vocab, max_len):
@@ -124,6 +119,7 @@ def _preprocess(x, vocab, max_len):
     label, ind1, ind2, text_tokens = x
     data = vocab[text_tokens]   ## map tokens (strings) to unique IDs
     data = data[:max_len]       ## truncate to max_len
+
     return label, ind1, ind2, data
 
 def preprocess_dataset(dataset, vocab, max_len):

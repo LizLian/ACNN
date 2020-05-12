@@ -115,9 +115,11 @@ class RelationClassifier(HybridBlock):
     def __init__(self, emb_input_dim, emb_output_dim, max_seq_len=100, num_hidden = 512, num_classes=19, dropout=0.2, is_training=True):
         super(RelationClassifier, self).__init__()
         self.max_len = max_seq_len
+        # dw - embeding size
         self.dp = 25
-        dc = 500
-        n = 124
+        dc = 1000
+        n = 100
+        np = 124
         nr = 19
         self.is_training = is_training
 
@@ -126,16 +128,16 @@ class RelationClassifier(HybridBlock):
         with self.name_scope():
             self.embedding = nn.Embedding(emb_input_dim, emb_output_dim)
             # self.rel_weight = gluon.Parameter('rel_weight', shape=(nr, max_seq_len))
-            self.relation_weight_layer = nn.Dense(max_seq_len, use_bias=False, flatten=False)
+            self.relation_weight_layer = nn.Dense(dc, use_bias=False, flatten=False)
             self.dropout = nn.Dropout(dropout)
             # sliding window + convolution layer
             self.conv1 = nn.Conv2D(dc, (3, self.d), (1, self.d), (1, 0), in_channels=1)
             self.conv = nn.Conv1D(dc, kernel_size=3, padding=1, use_bias=True, activation='tanh')
             # self.U = gluon.Parameter('u', shape=(n, nr))
             self.U_layer = nn.Dense(nr, use_bias=False, flatten=False)
-            self.max_pool = nn.MaxPool1D(dc, strides=1)
+            self.max_pool = nn.MaxPool1D(n, strides=1)
 
-            self.dist_embedding = nn.Embedding(124, self.dp, weight_initializer=mx.init.Xavier(magnitude=2.34))
+            self.dist_embedding = nn.Embedding(np, self.dp)
 
     def input_attention(self, data, inds):
         dist1 = []
@@ -182,15 +184,14 @@ class RelationClassifier(HybridBlock):
 
     def attentive_pooling(self, R_star):
         # R_star (batch_size, dc=500, n=100)
-        # RU = mx.nd.dot(R_star.transpose((0,2,1)), self.U.data()) # (batch_size, n=100, nr=19)
-        # G = mx.nd.dot(RU, self.rel_weight.data()) # (batch_size, n=100, dc=500)
-
-        RU = self.U_layer(R_star) # (batch_size, dc=500, n=100)
-        G = self.relation_weight_layer(RU) # (batch_size, dc=500, n=100)
-        AP = mx.nd.softmax(G, axis=1) # (batch_size, dc=500, n=100)
-        RA = R_star*AP # (batch_size, dc=500, n=100)
+        # R.transpose x U x WL
+        # (n, dc) x (dc, nr) x (nr, dc)
+        RU = self.U_layer(R_star.transpose((0,2,1))) # (batch_size, n=100, nr=19)
+        G = self.relation_weight_layer(RU) # (batch_size, n=100, dc=500)
+        AP = mx.nd.softmax(G, axis=1) # (batch_size, n=100, dc=500)
+        RA = R_star*AP.transpose((0,2,1)) # (batch_size, dc=500, n=100)
         # input for pooling should be (batch, channel, time), pooling is applied on time dim
-        wo = self.max_pool(RA.transpose((0,2,1))) # (batch_size, n=100, 1)
+        wo = self.max_pool(RA) # (batch_size, dc=500, 1)
         if self.is_training:
             wo = self.dropout(wo)
         return wo[:,:,0]

@@ -12,7 +12,7 @@ import gluonnlp as nlp
 from sklearn.metrics import precision_recall_curve, average_precision_score
 
 from load_data import load_dataset
-from model import RelationClassifier, GRUModel, N
+from model import RelationClassifier, CNNModel, N
 from utils import logging_config
 from mxnet.gluon.loss import Loss
 
@@ -22,9 +22,9 @@ parser.add_argument('--val_file', type=str, help='File containing file represent
 parser.add_argument('--test_file', type=str, help='File containing file representing the input TEST data', default=None)
 parser.add_argument('--epochs', type=int, default=20, help='Upper epoch limit')
 parser.add_argument('--optimizer',type=str, help='Optimizer (adam, sgd, etc.)', default='adam')
-parser.add_argument('--lr',type=float, help='Learning rate', default=0.001)
+parser.add_argument('--lr',type=float, help='Learning rate', default=0.03)
 parser.add_argument('--batch_size',type=int, help='Training batch size', default=64)
-parser.add_argument('--dropout', type=float, help='Dropout ratio', default=0.1)
+parser.add_argument('--dropout', type=float, help='Dropout ratio', default=0.2)
 parser.add_argument('--embedding_source', type=str, default='GoogleNews-vectors-negative300', help='Pre-trained embedding source name')
 parser.add_argument('--log_dir', type=str, default='.', help='Output directory for log file')
 parser.add_argument('--fixed_embedding', action='store_true', help='Fix the embedding layer weights')
@@ -51,17 +51,13 @@ def classify_test_data(model, data_test, ctx=mx.cpu()):
     return preds
 
 
-def train_classifier(vocabulary, transformer, data_train, data_val, data_test=None, ctx=mx.cpu()):
+def train_classifier(vocabulary, transformer, data, data_test=None, ctx=mx.cpu()):
     """
     Main loop for training a classifier
     """
-    data_train = gluon.data.SimpleDataset(data_train).transform(transformer)
-    data_val   = gluon.data.SimpleDataset(data_val).transform(transformer)
+
     if data_test:
-        data_test  = gluon.data.SimpleDataset(data_test).transform(transformer)    
-    
-    train_dataloader = mx.gluon.data.DataLoader(data_train, batch_size=args.batch_size, shuffle=True)
-    val_dataloader   = mx.gluon.data.DataLoader(data_val, batch_size=args.batch_size, shuffle=False)
+        data_test  = gluon.data.SimpleDataset(data_test).transform(transformer)
     if data_test:
         test_dataloader  = mx.gluon.data.DataLoader(data_test, batch_size=args.batch_size, shuffle=False)
 
@@ -92,7 +88,16 @@ def train_classifier(vocabulary, transformer, data_train, data_val, data_test=No
     y = mx.nd.one_hot(mx.nd.array([i for i in range(19)]), 19).as_in_context(ctx)
     distance_loss = DistanceLoss()
 
+    train_size = int(len(data) * 0.8)
     for epoch in range(args.epochs):
+        data = mx.nd.random.shuffle(data)
+        data_train = data[0: train_size]
+        data_val = data[train_size:]
+        data_train = gluon.data.SimpleDataset(data_train).transform(transformer)
+        data_val = gluon.data.SimpleDataset(data_val).transform(transformer)
+        train_dataloader = mx.gluon.data.DataLoader(data_train, batch_size=args.batch_size, shuffle=True)
+        val_dataloader = mx.gluon.data.DataLoader(data_val, batch_size=args.batch_size, shuffle=False)
+
         epoch_loss = 0
         for i, x in enumerate(train_dataloader):
             data, inds, label = x
@@ -102,7 +107,7 @@ def train_classifier(vocabulary, transformer, data_train, data_val, data_test=No
             with autograd.record():
                 wo, rel_weight = model(data, inds)
                 # l = loss_fn(output, label).mean()
-                l = distance_loss(wo, rel_weight, y, label)
+                l = distance_loss(wo, rel_weight, label)
                 # l = dist_loss2(wo, rel_weight, label, margin=1)
             l.backward()
             grads = [p.grad(ctx) for p in differentiable_params]
@@ -146,29 +151,26 @@ class DistanceLoss(nn.Block):
     def __init__(self):
         super(DistanceLoss, self).__init__()
 
-    def forward(self, wo, rel_weight, all_y, label, margin=1):
-        # rel_weight (nr=19, n=100)
+    def forward(self, wo, rel_weight, label, margin=1):
+        # rel_weight (nr=19, dc=500)
         label_onehot = mx.nd.one_hot(label[:, 0], 19)
         # wo_norm = mx.nd.L2Normalization(wo, 1) # (batch_size, dc=500)
-        wo_norm = wo/mx.nd.expand_dims(mx.nd.max(wo, axis=1),1)  # (batch_size, n=100)
+        wo_norm = wo/mx.nd.expand_dims(mx.nd.abs(mx.nd.max(wo, axis=1)),1)  # (batch_size, n=100)
         wo_norm_tile = mx.nd.repeat(mx.nd.expand_dims(wo_norm, axis=1), repeats=label_onehot.shape[-1],
                                     axis=1)  # (batch_size, nr=19, dc=500)
-        rel_emb = mx.nd.dot(label_onehot, rel_weight)  # (batch_size, n=100)
-        ay_emb = mx.nd.dot(all_y, rel_weight)
-        gt_dist = mx.nd.norm(wo_norm-rel_emb, 2, 1)  # (batch_size, 1)
-        all_dist = mx.nd.norm(wo_norm_tile - ay_emb, 2, 2) # (batch_size, nr=19)
-        masking_y = mx.nd.multiply(label_onehot, 10000)
-        # get longest distance y
+        gold_emb = mx.nd.dot(label_onehot, rel_weight)  # (batch_size, dc=500)
+        gt_dist = mx.nd.norm(wo_norm-gold_emb, 2, 1)  # (batch_size, 1)
+        all_dist = mx.nd.norm(wo_norm_tile-rel_weight, 2, 2) # (batch_size, nr=19)
+        masking_y = label*1000
         neg_dist = mx.nd.min(all_dist+masking_y, 1)
-        loss = mx.nd.sum(margin + gt_dist - neg_dist)
+        loss = mx.nd.sum(margin + gt_dist - neg_dist)/args.batch_size
         return loss
 
 
 def predict(wo, rel_weight):
     wo_norm = wo/mx.nd.expand_dims(mx.nd.max(wo, axis=1),1) # (batch_size, dc=500)
-    wo_norm_tile = mx.nd.repeat(mx.nd.expand_dims(wo_norm, axis=1), repeats=19, axis=1)  # (batch_size, nr=19, dc=500)
-    # all_dist = mx.nd.norm(wo_norm_tile - mx.nd.expand_dims(rel_weight, axis=0), 2, 2)  # (batch_size, nr=19)
-    dist = mx.nd.norm(wo_norm_tile - rel_weight,2,2) # (batch_size, nr=19)
+    pred_emb = mx.nd.max(rel_weight)
+    dist = mx.nd.norm(wo_norm-pred_emb, 2, 2) # (batch_size, nr=19)
     predictions = mx.nd.argmin(dist, axis=1).astype('int32')
     return predictions
 

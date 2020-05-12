@@ -1,0 +1,165 @@
+2020-04-19 11:23:19,951 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 11:26:41,352 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 11:35:46,382 - root - Epoch0 loss = 7796.068695068359
+2020-04-19 11:39:33,219 - root - Train Acc = 0.0125, Validation Acc = 0.0125
+2020-04-19 11:46:09,839 - root - Epoch1 loss = 7699.358551025391
+2020-04-19 11:49:38,504 - root - Train Acc = 0.04421875, Validation Acc = 0.044642857142857144
+2020-04-19 11:54:50,252 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 12:07:53,559 - root - Epoch0 loss = 6996.475845336914
+2020-04-19 12:13:03,118 - root - Train Acc = 0.1775, Validation Acc = 0.16607142857142856
+2020-04-19 15:20:33,734 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 15:53:26,086 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 16:41:09,647 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 16:46:20,403 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 18:29:14,406 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 18:52:20,968 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 18:55:46,926 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 19:01:48,259 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 19:05:57,832 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 19:09:35,879 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 19:23:27,151 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 19:28:22,683 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 19:37:53,951 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 19:49:45,677 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 19:58:47,008 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 20:17:07,329 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 20:18:58,898 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 20:23:25,261 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 20:26:57,353 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 20:35:04,102 - root - Epoch0 loss = 614.5170288085938
+2020-04-19 21:29:55,006 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 21:32:49,646 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 22:39:02,737 - root - Epoch0 loss = 614.6968936920166
+2020-04-19 22:42:55,187 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 22:44:33,637 - root - Train Acc = 0.0396875, Validation Acc = 0.04107142857142857
+2020-04-19 22:54:42,141 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-19 23:01:02,897 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 08:50:44,753 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 08:56:24,098 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 09:01:35,285 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 09:09:14,257 - root - Epoch0 loss = 732.164665222168
+2020-04-20 09:12:39,076 - root - Train Acc = 0.1775, Validation Acc = 0.16607142857142856
+2020-04-20 09:16:52,499 - root - Epoch1 loss = 1012.3155727386475
+2020-04-20 09:19:51,264 - root - Train Acc = 0.1775, Validation Acc = 0.16607142857142856
+2020-04-20 09:24:35,808 - root - Epoch2 loss = 1161.8425331115723
+2020-04-20 09:28:02,086 - root - Train Acc = 0.1775, Validation Acc = 0.16607142857142856
+2020-04-20 09:51:50,465 - root - Epoch3 loss = 1229.543601989746
+2020-04-20 09:55:23,622 - root - Train Acc = 0.1775, Validation Acc = 0.16607142857142856
+2020-04-20 09:59:47,273 - root - Epoch4 loss = 1268.5958042144775
+2020-04-20 10:02:47,822 - root - Train Acc = 0.1775, Validation Acc = 0.16607142857142856
+2020-04-20 10:07:23,765 - root - Epoch5 loss = 1294.1271028518677
+2020-04-20 10:10:17,478 - root - Train Acc = 0.1775, Validation Acc = 0.16607142857142856
+2020-04-20 10:20:05,672 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 13:11:35,323 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 13:20:35,799 - root - Epoch0 loss = 293.7920980453491
+2020-04-20 13:24:17,901 - root - Train Acc = 0.1775, Validation Acc = 0.16607142857142856
+2020-04-20 14:01:09,642 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 14:08:02,839 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 17:53:26,619 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 17:58:04,331 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 18:11:04,320 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 18:18:10,071 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 18:26:29,173 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 18:57:30,516 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 19:01:18,779 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 19:12:57,103 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 19:17:32,076 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 19:27:21,149 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 20:05:43,613 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 20:09:10,001 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-20 20:23:26,491 - root - Epoch0 loss = 34610.82853472233
+2020-04-20 20:28:19,939 - root - Train Acc = 0.0396875, Validation Acc = 0.04107142857142857
+2020-04-20 20:40:37,047 - root - Epoch1 loss = 34156.15110492706
+2020-04-20 20:48:10,514 - root - Train Acc = 0.0709375, Validation Acc = 0.05892857142857143
+2020-04-21 01:18:25,798 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-21 01:22:25,654 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-21 01:34:36,270 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-21 02:00:03,389 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 02:11:34,509 - root - Epoch0 loss = 544.2541863899678
+2020-04-21 02:16:30,060 - root - Train Acc = 0.20796875, Validation Acc = 0.175
+2020-04-21 07:13:44,947 - root - Epoch1 loss = 543.7661098558456
+2020-04-21 07:18:38,155 - root - Train Acc = 0.31296875, Validation Acc = 0.25892857142857145
+2020-04-21 07:30:41,513 - root - Epoch2 loss = 543.4936190210283
+2020-04-21 08:19:36,359 - root - Train Acc = 0.35890625, Validation Acc = 0.2910714285714286
+2020-04-21 08:29:24,173 - root - Epoch3 loss = 543.2711170595139
+2020-04-21 08:43:10,854 - root - Train Acc = 0.40234375, Validation Acc = 0.32857142857142857
+2020-04-21 08:52:52,594 - root - Epoch4 loss = 543.0747932363302
+2020-04-21 08:58:00,803 - root - Train Acc = 0.42234375, Validation Acc = 0.35
+2020-04-21 08:59:54,386 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 09:12:06,934 - root - Epoch0 loss = 544.3895974233747
+2020-04-21 09:19:00,064 - root - Train Acc = 0.48203125, Validation Acc = 0.425
+2020-04-21 09:33:32,357 - root - Epoch1 loss = 535.0453603304923
+2020-04-21 09:40:18,557 - root - Train Acc = 0.6096875, Validation Acc = 0.5035714285714286
+2020-04-21 09:54:54,941 - root - Epoch2 loss = 524.9588075652719
+2020-04-21 10:01:42,443 - root - Train Acc = 0.61390625, Validation Acc = 0.5303571428571429
+2020-04-21 10:16:31,586 - root - Epoch3 loss = 514.1158603969961
+2020-04-21 10:23:28,178 - root - Train Acc = 0.605625, Validation Acc = 0.525
+2020-04-21 10:38:12,586 - root - Epoch4 loss = 502.6944614518434
+2020-04-21 10:43:41,222 - root - Train Acc = 0.61125, Validation Acc = 0.5178571428571429
+2020-04-21 10:53:01,926 - root - Epoch5 loss = 492.1592887220904
+2020-04-21 10:57:44,816 - root - Train Acc = 0.6490625, Validation Acc = 0.5660714285714286
+2020-04-21 11:08:00,624 - root - Epoch6 loss = 481.63110306928866
+2020-04-21 11:12:34,089 - root - Train Acc = 0.6465625, Validation Acc = 0.5464285714285714
+2020-04-21 11:23:45,530 - root - Epoch7 loss = 471.8449719212949
+2020-04-21 11:31:21,482 - root - Train Acc = 0.65359375, Validation Acc = 0.5660714285714286
+2020-04-21 11:41:43,923 - root - Epoch8 loss = 461.69870850851294
+2020-04-21 11:47:04,902 - root - Train Acc = 0.66296875, Validation Acc = 0.5875
+2020-04-21 11:50:35,886 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 11:59:30,944 - root - Epoch0 loss = 543.5102605763823
+2020-04-21 12:03:01,058 - root - Train Acc = 0.53375, Validation Acc = 0.4767857142857143
+2020-04-21 12:12:30,258 - root - Epoch1 loss = 503.8647762546316
+2020-04-21 12:16:19,104 - root - Train Acc = 0.59015625, Validation Acc = 0.5071428571428571
+2020-04-21 12:25:06,123 - root - Epoch2 loss = 466.93640701513505
+2020-04-21 12:28:35,281 - root - Train Acc = 0.64703125, Validation Acc = 0.5803571428571429
+2020-04-21 12:37:25,221 - root - Epoch3 loss = 432.1610334000143
+2020-04-21 12:40:50,196 - root - Train Acc = 0.671875, Validation Acc = 0.5946428571428571
+2020-04-21 12:49:50,312 - root - Epoch4 loss = 400.42235857883134
+2020-04-21 12:53:23,214 - root - Train Acc = 0.68578125, Validation Acc = 0.6125
+2020-04-21 13:02:00,595 - root - Epoch5 loss = 372.1071242950111
+2020-04-21 13:05:02,708 - root - Train Acc = 0.71359375, Validation Acc = 0.6428571428571429
+2020-04-21 13:12:44,502 - root - Epoch6 loss = 345.9374504865823
+2020-04-21 13:17:11,601 - root - Train Acc = 0.715, Validation Acc = 0.6375
+2020-04-21 13:25:03,466 - root - Epoch7 loss = 322.83405017595777
+2020-04-21 13:28:44,273 - root - Train Acc = 0.72984375, Validation Acc = 0.6607142857142857
+2020-04-21 13:36:54,482 - root - Epoch8 loss = 302.0304732577114
+2020-04-21 13:40:11,106 - root - Train Acc = 0.7446875, Validation Acc = 0.6607142857142857
+2020-04-21 13:48:16,493 - root - Epoch9 loss = 280.4111639318289
+2020-04-21 13:55:48,989 - root - Train Acc = 0.7584375, Validation Acc = 0.6892857142857143
+2020-04-21 14:04:00,707 - root - Epoch10 loss = 262.98826443323026
+2020-04-21 14:07:09,330 - root - Train Acc = 0.7646875, Validation Acc = 0.6875
+2020-04-21 14:15:37,201 - root - Epoch11 loss = 244.99535158750444
+2020-04-21 14:19:12,539 - root - Train Acc = 0.7709375, Validation Acc = 0.6875
+2020-04-21 14:28:06,158 - root - Epoch12 loss = 229.0413445443899
+2020-04-21 14:31:41,475 - root - Train Acc = 0.7784375, Validation Acc = 0.6928571428571428
+2020-04-21 14:48:11,666 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 14:53:21,291 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 14:55:21,894 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 14:58:55,430 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 15:00:53,903 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 15:12:24,703 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 15:15:27,414 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 15:32:31,447 - root - Epoch0 loss = 585.3606170937419
+2020-04-21 15:38:20,731 - root - Train Acc = 0.566764705882353, Validation Acc = 0.3025
+2020-04-21 15:44:04,980 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 16:07:19,591 - root - Epoch0 loss = 585.8302914556116
+2020-04-21 16:15:42,339 - root - Train Acc = 0.5047058823529412, Validation Acc = 0.24583333333333332
+2020-04-21 16:18:44,415 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 16:31:45,766 - root - Epoch0 loss = 666.4493443015963
+2020-04-21 16:39:02,171 - root - Train Acc = 0.5519117647058823, Validation Acc = 0.30333333333333334
+2020-04-21 16:51:58,257 - root - Epoch1 loss = 628.3642629557289
+2020-04-21 16:57:55,327 - root - Train Acc = 0.6273529411764706, Validation Acc = 0.5566666666666666
+2020-04-21 20:13:35,269 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 20:23:00,698 - root - Epoch0 loss = 585.8021687734872
+2020-04-21 20:27:29,259 - root - Train Acc = 0.5617647058823529, Validation Acc = 0.30416666666666664
+2020-04-21 20:39:25,283 - root - Epoch1 loss = 533.09724590322
+2020-04-21 20:43:17,498 - root - Train Acc = 0.6085294117647059, Validation Acc = 0.5666666666666667
+2020-04-21 21:12:42,951 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/glove/glove.6B.300d.npz
+2020-04-21 21:21:59,456 - root - Epoch0 loss = 665.4500058554113
+2020-04-21 21:25:28,758 - root - Train Acc = 0.5575, Validation Acc = 0.2775
+2020-04-21 21:34:41,862 - root - Epoch1 loss = 627.2385926502757
+2020-04-21 21:38:11,444 - root - Train Acc = 0.6061764705882353, Validation Acc = 0.545
+2020-04-21 21:57:11,630 - root - Loading pre-trained token embedding vectors from /Users/yanliang/.mxnet/embedding/word2vec/GoogleNews-vectors-negative300-be6d6f98.npz
+2020-04-21 22:08:18,186 - root - Epoch0 loss = 675.5844597425312
+2020-04-21 22:12:01,837 - root - Train Acc = 0.020441176470588237, Validation Acc = 0.004166666666666667
+2020-04-21 22:20:41,794 - root - Epoch1 loss = 671.7491275705397
+2020-04-21 22:24:29,391 - root - Train Acc = 0.0611764705882353, Validation Acc = 0.06166666666666667
